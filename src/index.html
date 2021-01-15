@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Travel Tracker</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <section class="header">
+      <h1>Travel Tracker</h1>
+      <button>Logout</button>
+    </section>
+    <section class="mid-section">
+      <button>Add New Trip</button>
+      <p>Total Cost with 10% Travel Agent Fee:</p>
+    </section>
+    <section class="main">
+      <div>Past</div>
+      <div>Present</div>
+      <div>Upcoming</div>
+      <div>Pending</div>
+    </section>
+    <form class="login-form">
+      <h1>Travel Tracker</h1>
+      <p>Username
+        <input type="text" name="username" maxlenght="30">
+      </p>
+      <p>Password
+        <input type="password" name="passwprd" maxlength="30">
+      </p>
+    </form>
+    <form class="add-new-trip-form">
+      <h1>Add New Trip</h1>
+      <p>Start Date 
+        <input type="date" class="calendar" name="calendar" value="2019-06-15" min="" max="">
+      </p>
+      <p>End Date
+        <input type="date" class="calendar" name="calendar" value="2019-06-15" min="" max="">
+      </p>
+      <p>Number of Travelers 
+        <input type="number" name="number-of-travelers" class="number-of-travel</p>ers" min="0" max="100">
+      </p>
+      <p>Destinations 
+        <select>
+          <option>List of destinations</option>
+        </select>
+      </p>
+      <button>Submit</button>
+    </form>
   </body>
 </html>
+  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
