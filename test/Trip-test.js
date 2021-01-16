@@ -23,5 +23,10 @@ describe('Trip class', () => {
     expect(trip1.userID).to.eq(44)
   });
 
+  it('should initialize with a destination id', () => {
+    expect(trip2.destinationID).to.eq(25)
+  });
+
   
+
 });
