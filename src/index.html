@@ -4,10 +4,10 @@
     <title>Travel Tracker</title>
   </head>
   <body>
-    <section class="header">
+    <header>
       <h1>Travel Tracker</h1>
-      <button>Logout</button>
-    </section>
+      <button class="logout-btn">Logout</button>
+    </header>
     <section class="mid-section">
       <button>Add New Trip</button>
       <p>Total Cost with 10% Travel Agent Fee:</p>
@@ -18,17 +18,17 @@
       <div>Upcoming</div>
       <div>Pending</div>
     </section>
-    <form class="login-form">
+    <form class="login-form hidden">
       <h1>Travel Tracker</h1>
       <p>Username
         <input type="text" name="username" maxlenght="30">
       </p>
       <p>Password
-        <input type="password" name="passwprd" maxlength="30">
+        <input type="password" name="password" maxlength="30">
       </p>
       <button>Login</button>
     </form>
-    <form class="add-new-trip-form">
+    <form class="add-new-trip-form hidden">
       <h1>Add New Trip</h1>
       <p>Start Date 
         <input type="date" class="calendar" name="calendar" value="2019-06-15" min="" max="">
