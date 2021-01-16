@@ -15,16 +15,20 @@ describe('Trip class', () => {
     expect(trip1).to.be.an.instanceOf(Trip)
   });
 
-  it('should initialize with an id', () => {
+  it('should have an id', () => {
     expect(trip2.id).to.eq(2)
   });
 
-  it('should initialize with a userID', () => {
+  it('should have a userID', () => {
     expect(trip1.userID).to.eq(44)
   });
 
-  it('should initialize with a destination id', () => {
+  it('should have a destination id', () => {
     expect(trip2.destinationID).to.eq(25)
+  });
+
+  it('should have amount of travelers', () => {
+    expect(trip1.travelers).to.eq(1)
   });
 
   
