@@ -23,4 +23,8 @@ describe('Traveler class', () => {
     expect(user2.name).to.eq("Rachael Vaughten")
   });
 
+  it('should intialize with a traveler type', () => {
+    expect(user1.travelerType).to.eq("relaxer")
+  });
+  
 });
