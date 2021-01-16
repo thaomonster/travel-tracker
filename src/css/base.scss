@@ -10,11 +10,6 @@ body {
   margin: 0%;
 }
 
-button {
-  border-radius: 0.4em;
-  border: none;
-}
-
 h1 {
   display: flex;
   font-size: 2em;
@@ -31,21 +26,28 @@ header {
 }
 
 
-.logout-btn {
-  font-size: 0.9em;
-  margin: 0.6%;
-  padding: 0 2%;
-}
-
 .main {
   display: flex;
   justify-content: space-around;
+  margin-top: 2%;
 }
 
 .mid-section {
   display: flex;
   justify-content: space-around;
-  padding: 3%;
+  padding: 2%;
+}
+
+p {
+  background-color: #A1ABACff;
+  opacity: 0.8;
+  font-size: 1.4em;
+}
+
+.widgets {
+  border: 0.1em solid #000000;
+  background-color: #A1ABACff;
+  opacity: 0.8;
 }
 
 .hidden {

@@ -1,0 +1,19 @@
+button {
+  border-radius: 0.4em;
+  border: none;
+}
+
+.logout-btn {
+  font-size: 0.9em;
+  margin: 1%;
+  padding: 0 2%;
+  background-color: $button-background;
+}
+
+.add-trip-btn {
+  background-color: $button-background;
+  margin: 0.6%;
+  padding: 0 2%;
+  font-size: 1em;
+}
+
