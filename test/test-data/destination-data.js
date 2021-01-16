@@ -42,3 +42,5 @@ let sampleDestinations = {
     },
   ]
 }
+
+export default sampleDestinations;

@@ -3,28 +3,27 @@ import Traveler from '../src/Traveler';
 import sampleTravelerData from '../test/test-data/traveler-data';
 
 describe('Traveler class', () => {
-  let users, user1, user2
+  let user, user1;
   
   beforeEach(() => {
-    users = new Traveler(sampleTravelerData);
-    user1 = new Traveler(sampleTravelerData.travelers[0]);
-    user2 = new Traveler(sampleTravelerData.travelers[1]);
-  });
+    user = new Traveler(sampleTravelerData.travelers[0]);
+    user1 = new Traveler(sampleTravelerData.travelers[1]);
+  })
 
   it('should be an instance of a Traveler class', () => {
-    expect(user1).to.be.an.instanceOf(Traveler)
-  });
+    expect(user).to.be.an.instanceOf(Traveler);
+  })
 
   it('should initialize with an id', () => {
-    expect(user1.id).to.eq(1);
-  });
+    expect(user.id).to.eq(1);
+  })
 
   it('should intialize with a name', () => {
-    expect(user2.name).to.eq("Rachael Vaughten")
-  });
+    expect(user1.name).to.eq("Rachael Vaughten");
+  })
 
   it('should intialize with a traveler type', () => {
-    expect(user1.travelerType).to.eq("relaxer")
-  });
+    expect(user.travelerType).to.eq("relaxer");
+  })
   
-});
+})
