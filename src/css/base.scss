@@ -22,7 +22,7 @@ h1 {
 header {
   display: flex;
   justify-content: space-between;
-  background-color: $header-background
+  background-color: $header-background;
 }
 
 
@@ -38,18 +38,12 @@ header {
   padding: 2%;
 }
 
-p {
-  background-color: #A1ABACff;
-  opacity: 0.8;
-  font-size: 1.4em;
-}
-
+p, 
 .widgets {
-  border: 0.1em solid #000000;
-  background-color: #A1ABACff;
-  opacity: 0.8;
+  font-size: 1.2em;
+  @include widgetStyles();
 }
 
 .hidden {
-  display:none
+  display:none;
 }
