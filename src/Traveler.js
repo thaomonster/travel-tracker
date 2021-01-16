@@ -5,3 +5,5 @@ class Traveler {
     this.travelerType = traveler.travelerType;
   }
 }
+
+export default Traveler;
