@@ -31,6 +31,20 @@ describe('Trip class', () => {
     expect(trip1.travelers).to.eq(1)
   });
 
-  
+  it('should have a trip date', () => {
+    expect(trip2.date).to.eq("2020/10/04")
+  });
+
+  it('should have a trip duration', () => {
+    expect(trip1.duration).to.eq(8)
+  });
+
+  it('should have trip status', () => {
+    expect(trip2.status).to.eq("pending")
+  });
+
+  it('should have an array of suggested activities', () => {
+    expect(trip1.suggestedActivities).to.deep.eq([])
+  });
 
 });
