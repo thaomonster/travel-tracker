@@ -1,7 +1,59 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+// --pale-silver: #C5B2A4ff;
+// --xanadu: #7E8671ff;
+// --lavender-gray: #CCCCD8ff;
+// --light-french-beige: #CAB07Aff;
+// --silver-chalice: #A1ABACff;
 
 body {
-  background: $primary-background;
+  background: $primary-background no-repeat center fixed;
+  background-size: cover;
+  margin: 0%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  display: flex;
+  font-size: 2em;
+  color: white;
+  background-color: $header-background;
+  padding: 0.5%; 
+  margin: 0%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $header-background;
+}
+
+.hidden {
+  display:none!important;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10%;
+  margin: 10.5%;
+  @include widgetStyles();
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-header,
+.users-trips-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 2%;
+}
+
+.total-cost, 
+.widgets {
+  font-size: 1.2em;
+  @include widgetStyles();
 }

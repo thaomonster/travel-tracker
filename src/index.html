@@ -2,32 +2,35 @@
 <html lang="en-US">
   <head>
     <title>Travel Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   </head>
   <body>
-    <section class="header">
+    <header>
       <h1>Travel Tracker</h1>
-      <button>Logout</button>
-    </section>
-    <section class="mid-section">
-      <button>Add New Trip</button>
-      <p>Total Cost with 10% Travel Agent Fee:</p>
-    </section>
+      <button class="logout-btn">Logout</button>
+    </header>
     <section class="main">
-      <div>Past</div>
-      <div>Present</div>
-      <div>Upcoming</div>
-      <div>Pending</div>
+      <div class="sub-header">
+        <button class="add-trip-btn">Add New Trip</button>
+        <p class="total-cost">Total Cost with 10% Travel Agent Fee:</p>
+      </div>
+      <article class="users-trips-section">
+        <div class="widgets">Past</div>
+        <div class="widgets">Present</div>
+        <div class="widgets">Upcoming</div>
+        <div class="widgets">Pending</div>
+      </article>
     </section>
-    <form class="login-form">
-      <h1>Travel Tracker</h1>
-      <p>Username
-        <input type="text" name="username" maxlenght="30">
+    <form class="login-form hidden">
+      <p class="login-credentials">Username
+        <input type="text" class="login-input" name="username" maxlenght="30">
       </p>
-      <p>Password
-        <input type="password" name="passwprd" maxlength="30">
+      <p class="login-credentials">Password
+        <input type="password" class="login-input" name="password" maxlength="30">
       </p>
+      <button class="login-btn">Login</button>
     </form>
-    <form class="add-new-trip-form">
+    <form class="add-new-trip-form hidden">
       <h1>Add New Trip</h1>
       <p>Start Date 
         <input type="date" class="calendar" name="calendar" value="2019-06-15" min="" max="">

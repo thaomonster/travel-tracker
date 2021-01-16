@@ -1,0 +1,10 @@
+$primary-background: url(../images/chris-lawton-KpBXAOs80YI-unsplash.jpg);
+$header-background: #7E8671ff;
+$button-background: #CCCCD8ff;
+
+@mixin widgetStyles() {
+  border: 0.1em solid #000000;
+  border-radius: 0.4em;
+  background-color: #A1ABACff;
+  opacity: 0.8;
+}
