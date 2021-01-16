@@ -1,7 +1,3 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: url(../images/chris-lawton-KpBXAOs80YI-unsplash.jpg)
-;
-
 body {
   background: $primary-background no-repeat center fixed;
   background-size: cover;
@@ -14,5 +10,4 @@ h1 {
   font-size: 2em;
   color: white;
 }
-
 
