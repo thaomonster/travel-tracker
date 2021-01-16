@@ -14,5 +14,8 @@ describe('Traveler class', () => {
     expect(user1).to.be.an.instanceOf(Traveler)
   })
 
-  it('')
+  it('should initialize with an id', () => {
+    expect(user1.id).to.eq(1);
+  });
+
 })
