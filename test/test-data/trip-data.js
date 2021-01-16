@@ -42,3 +42,5 @@ let sampleTrips = {
     },
   ]
 }
+
+export default sampleTrips;
