@@ -1,16 +1,45 @@
 import './css/index.scss';
 import Traveler from '../src/Traveler';
-import Trip from '../src/Trips';
-import TripsRepo from '../src/TripsRepo';
-import Destination from '../src/Destinations';
-import DestinationsRepo from '../src/DestinationsRepo'
-import {getData} from '../src/apis'
+import Trip from './Trip';
+import TripRepo from './TripRepo';
+import Destination from './Destination';
+import DestinationRepo from './DestinationRepo'
+import apiCalls from '../src/apis'
 import domUpdates from '../src/domUpdates'
 
-window.onload = loadPage;
+const pastTrips = document.querySelector('.past-trip-js');
+const totalCost = document.querySelector('.total-cost-js')
 
-function loadPage() {
-  getData('travelers/38');
-  getData('trips');
-  getData('destinations');
-}
+let traveler, trips, tripRepo, destinations, destinationRepo;
+
+Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDestinationsData()])
+  .then(data => {
+    let destArr = []
+    let userTrips = data[1].trips.filter(trip => trip.userID === data[0].id)
+    data[2].destinations.filter(destination => {
+      userTrips.forEach(trip => {
+        if (destination.id === trip.destinationID) {
+          destArr.push(destination)
+        }
+      })
+    })
+   const travelObj = data.reduce((acc, current) => {
+      acc = {
+        id: data[0].id,
+        name: data[0].name,
+        travelerType: data[0].travelerType,
+        trips: userTrips,
+        destinations: destArr
+      }
+      return acc
+    }, {})
+    instantiateClasses(travelObj)
+  })
+  
+  function instantiateClasses(obj) {
+    traveler = new Traveler(obj);
+    trips = obj.trips.map(trip => new Trip(trip));
+    tripRepo = new TripRepo(trips);
+    destinations = obj.destinations.map(destination => new Destination(destination));
+    destinationRepo = new DestinationRepo(destinations);
+  }

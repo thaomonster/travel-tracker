@@ -1,5 +1,5 @@
 
-class TripsRepo {
+class TripRepo {
   constructor(trips) {
     this.trips = trips || []
   }
@@ -24,4 +24,4 @@ class TripsRepo {
   }
 }
 
-export default TripsRepo; 
+export default TripRepo; 

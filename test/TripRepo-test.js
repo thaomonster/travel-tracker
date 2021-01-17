@@ -1,25 +1,25 @@
 import { expect } from 'chai';
 import Trip from '../src/Trips';
-import TripsRepo from '../src/TripsRepo';
+import TripRepo from '../src/TripsRepo';
 import sampleTripData from '../test/test-data/trip-data';
 
 describe('TripRepo Class', () => {
-  let trip1, trip2, trip3, tripsRepo;
+  let trip1, trip2, trip3, tripRepo;
   
   beforeEach(() => {
     trip1 = new Trip(sampleTripData.trips[0]);
     trip2 = new Trip(sampleTripData.trips[1]);
     trip3 = new Trip(sampleTripData.trips[2]);
-    tripsRepo = new TripsRepo([trip1, trip2, trip3]);
+    tripRepo = new TripRepo([trip1, trip2, trip3]);
   })
   
   describe('Intitialize', () => {
     it('should be an instance of TripRepo', () => {
-      expect(tripsRepo).to.be.an.instanceOf(TripsRepo);
+      expect(tripRepo).to.be.an.instanceOf(TripRepo);
     });
     
     it('should not have an empty array by default', () => {
-      expect(tripsRepo.trips).to.deep.eq([
+      expect(tripRepo.trips).to.deep.eq([
         {
           "id": 1,
           "userID": 44,
@@ -56,9 +56,9 @@ describe('TripRepo Class', () => {
 
   describe('Method', () => {
     it('should filter trips by date', () => {
-      tripsRepo.filterTripsByYear('2019');
+      tripRepo.filterTripsByYear('2019');
 
-      expect(tripsRepo.filterTripsByYear('2019')).to.deep.eq([
+      expect(tripRepo.filterTripsByYear('2019')).to.deep.eq([
         {
           "id": 1,
           "userID": 44,
@@ -99,9 +99,9 @@ describe('TripRepo Class', () => {
           alt: "people crossing the street during the day surrounded by tall buildings and advertisements"
         },  
       ]
-      tripsRepo.calculateTotalTripCostPerYear(destinations, 44);
+      tripRepo.calculateTotalTripCostPerYear(destinations, 44);
       
-      expect(tripsRepo.calculateTotalTripCostPerYear(destinations, 44)).to.eq(5819)
+      expect(tripRepo.calculateTotalTripCostPerYear(destinations, 44)).to.eq(5819)
     })
   })
 
