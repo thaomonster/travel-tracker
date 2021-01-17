@@ -7,4 +7,10 @@ import DestinationsRepo from '../src/DestinationsRepo'
 import {getData} from '../src/apis'
 import domUpdates from '../src/domUpdates'
 
-getData('travelers')
+window.onload = loadPage;
+
+function loadPage() {
+  getData('travelers/38');
+  getData('trips');
+  getData('destinations');
+}
