@@ -46,4 +46,11 @@ describe('Trip class', () => {
     expect(trip.suggestedActivities).to.deep.eq([]);
   })
 
+  it('should have start with an empty list', () => {
+    expect(trip1.pastTrips).to.deep.eq([]);
+    expect(trip1.presentTrips).to.deep.eq([]);
+    expect(trip1.upcomingTrips).to.deep.eq([]);
+    expect(trip1.pendingTrips).to.deep.eq([]);
+  })
+
 })
