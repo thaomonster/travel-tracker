@@ -3,7 +3,6 @@ import Trip from '../src/Trips';
 import TripsRepo from '../src/TripsRepo';
 import sampleTripData from '../test/test-data/trip-data';
 
-
 describe('TripRepo Class', () => {
   let trip1, trip2, trip3, tripsRepo;
   
