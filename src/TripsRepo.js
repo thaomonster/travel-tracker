@@ -1,4 +1,3 @@
-import Destinations from './Destinations'
 
 class TripsRepo {
   constructor(trips) {
@@ -12,16 +11,17 @@ class TripsRepo {
     })
   }
 
-  // calculateTotalTripCostPerYear(trips) {
-  //   return this.trips.reduce((totalCost, trip) => {
-  //     Destinations.forEach(destination => {
-  //       if (trip.destinationID === destination.id) {
-  //         acc += 
-  //       }
-  //     })
-  //     return acc
-  //   }, 0)
-  // }
+  calculateTotalTripCostPerYear(destinations, travelerID) {
+    return this.trips.reduce((totalCost, trip) => {
+      destinations.forEach(destination => {
+        if (trip.destinationID === destination.id && trip.userID === travelerID) {
+          const costWithoutFee = (destination.estimatedLodgingCostPerDay * trip.duration) + (destination.estimatedFlightCostPerPerson * trip.travelers)
+          totalCost = Math.round(costWithoutFee * 1.1)
+        }
+      })
+      return totalCost
+    }, 0)
+  }
 }
 
 export default TripsRepo; 
