@@ -1,24 +1,24 @@
 import { expect } from 'chai';
-import Destination from '../src/Destinations';
-import DestinationsRepo from '../src/DestinationsRepo'
+import Destination from '../src/Destination';
+import DestinationRepo from '../src/DestinationRepo'
 import destinationData from '../test/test-data/destination-data';
 
 describe('Destination Repo Class', () => {
-  let destionation1, destionation2, destionation3, destinationsRepo;
+  let destionation1, destionation2, destionation3, destinationRepo;
 
   beforeEach(() => {
     destionation1 = new Destination(destinationData.destinations[0]);
     destionation2 = new Destination(destinationData.destinations[1]);
     destionation3 = new Destination(destinationData.destinations[2]);
-    destinationsRepo = new DestinationsRepo([destionation1, destionation2, destionation3]);
+    destinationRepo = new DestinationRepo([destionation1, destionation2, destionation3]);
   })
 
-  it('should be an instance of DestinationsRepo', () => {
-    expect(destinationsRepo).to.be.an.instanceOf(DestinationsRepo);
+  it('should be an instance of DestinationRepo', () => {
+    expect(destinationRepo).to.be.an.instanceOf(DestinationRepo);
   });
   
   it('should not have an empty array by default', () => {
-    expect(destinationsRepo.destinations).to.deep.eq([
+    expect(destinationRepo.destinations).to.deep.eq([
       {
         id: 14,
         destination: "Marrakesh, Morocco",

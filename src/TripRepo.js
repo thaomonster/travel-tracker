@@ -7,6 +7,7 @@ class TripRepo {
   filterTripsByYear(year) {
     return this.trips.filter(trip => {
       const splitDate = trip.date.split('/')[0]
+      console.log(splitDate)
       return splitDate === year
     })
   }

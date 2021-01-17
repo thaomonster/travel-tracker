@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Destination from '../src/Destinations';
+import Destination from '../src/Destination';
 import destinationData from '../test/test-data/destination-data';
 
 describe('Destination class', () => {

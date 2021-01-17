@@ -6,7 +6,7 @@ function getData(path) {
 
 let apiCalls = {
   getTravelerData() {
-    return getData('http://localhost:3001/api/v1/travelers/38')
+    return getData('http://localhost:3001/api/v1/travelers/22')
   },
 
   getTripsData() {

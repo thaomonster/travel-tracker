@@ -7,10 +7,13 @@ import DestinationRepo from './DestinationRepo'
 import apiCalls from '../src/apis'
 import domUpdates from '../src/domUpdates'
 
-const pastTrips = document.querySelector('.past-trip-js');
-const totalCost = document.querySelector('.total-cost-js')
+let pastTrips = document.querySelector('.past-trip-js');
+let totalCost = document.querySelector('.total-cost-js');
+
 
 let traveler, trips, tripRepo, destinations, destinationRepo;
+
+window.addEventListener('load', pageLoad)
 
 Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDestinationsData()])
   .then(data => {
@@ -36,10 +39,15 @@ Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDe
     instantiateClasses(travelObj)
   })
   
-  function instantiateClasses(obj) {
-    traveler = new Traveler(obj);
-    trips = obj.trips.map(trip => new Trip(trip));
-    tripRepo = new TripRepo(trips);
-    destinations = obj.destinations.map(destination => new Destination(destination));
-    destinationRepo = new DestinationRepo(destinations);
-  }
+function instantiateClasses(obj) {
+  traveler = new Traveler(obj);
+  trips = obj.trips.map(trip => new Trip(trip));
+  tripRepo = new TripRepo(trips);
+  destinations = obj.destinations.map(destination => new Destination(destination));
+  destinationRepo = new DestinationRepo(destinations);
+  console.log(tripRepo)
+}
+
+function pageLoad() {
+  domUpdates.displayTotalCost(totalCost, destinations, 22, tripRepo)
+}

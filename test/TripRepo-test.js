@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import Trip from '../src/Trips';
-import TripRepo from '../src/TripsRepo';
+import Trip from '../src/Trip';
+import TripRepo from '../src/TripRepo';
 import sampleTripData from '../test/test-data/trip-data';
 
 describe('TripRepo Class', () => {
