@@ -12,14 +12,19 @@
     <section class="main">
       <div class="sub-header">
         <button class="add-trip-btn">Add New Trip</button>
-        <p class="total-cost">Total Cost with 10% Travel Agent Fee:</p>
+          <select class="year-drop-down-js">
+            <option>Select Year</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+          </select> 
+          <p class="total-cost total-cost-js"></p>
       </div>
-      <article class="users-trips-section">
-        <div class="widgets">Past</div>
-        <div class="widgets">Present</div>
-        <div class="widgets">Upcoming</div>
-        <div class="widgets">Pending</div>
-      </article>
+      <section class="users-trips-section">
+        <article class="widgets past-trip-js">Past</article>
+        <article class="widgets present-trip-js">Present</article>
+        <article class="widgets upcoming-trip-js">Upcoming</article>
+        <article class="widgets pending-trip-js">Pending</article>
+      </section>
     </section>
     <form class="login-form hidden">
       <p class="login-credentials">Username
@@ -30,13 +35,13 @@
       </p>
       <button class="login-btn">Login</button>
     </form>
-    <form class="add-new-trip-form hidden">
+    <form class="add-new-trip-form">
       <h1>Add New Trip</h1>
       <p>Start Date 
-        <input type="date" class="calendar" name="calendar" value="2019-06-15" min="" max="">
+        <input type="date" class="calendar" name="calendar" value="2020-01-01" min="" max="">
       </p>
       <p>End Date
-        <input type="date" class="calendar" name="calendar" value="2019-06-15" min="" max="">
+        <input type="date" class="calendar" name="calendar" value="2020-02-02" min="" max="">
       </p>
       <p>Number of Travelers 
         <input type="number" name="number-of-travelers" class="number-of-travel</p>ers" min="0" max="100">
@@ -50,4 +55,3 @@
     </form>
   </body>
 </html>
-  <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
