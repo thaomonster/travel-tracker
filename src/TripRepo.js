@@ -1,14 +1,17 @@
-
-class TripRepo {
+class TripsRepo {
   constructor(trips) {
     this.trips = trips || []
   }
 
   filterTripsByYear(year) {
     return this.trips.filter(trip => {
-      const splitDate = trip.date.split('/')[0]
-      console.log(splitDate)
-      return splitDate === year
+      return trip.date.split('/')[0] === year && trip.status === 'approved';
+    })
+  }
+
+  filterPendingTrips(year) {
+    return this.trips.filter(trip => {
+      return trip.date.split('/')[0] > year && trip.status === 'pending';
     })
   }
 
@@ -16,7 +19,7 @@ class TripRepo {
     return this.trips.reduce((totalCost, trip) => {
       destinations.forEach(destination => {
         if (trip.destinationID === destination.id && trip.userID === travelerID) {
-          const costWithoutFee = (destination.estimatedLodgingCostPerDay * trip.duration) + (destination.estimatedFlightCostPerPerson * trip.travelers)
+          let costWithoutFee = (destination.estimatedLodgingCostPerDay * trip.duration) + (destination.estimatedFlightCostPerPerson * trip.travelers)
           totalCost = Math.round(costWithoutFee * 1.1)
         }
       })
@@ -25,4 +28,4 @@ class TripRepo {
   }
 }
 
-export default TripRepo; 
+export default TripsRepo; 

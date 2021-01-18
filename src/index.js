@@ -1,19 +1,24 @@
 import './css/index.scss';
 import Traveler from '../src/Traveler';
 import Trip from './Trip';
-import TripRepo from './TripRepo';
+import TripsRepo from './TripRepo';
 import Destination from './Destination';
-import DestinationRepo from './DestinationRepo'
+import DestinationsRepo from './DestinationRepo'
 import apiCalls from '../src/apis'
 import domUpdates from '../src/domUpdates'
 
-let pastTrips = document.querySelector('.past-trip-js');
-let totalCost = document.querySelector('.total-cost-js');
+const displayPastTripsElement = document.querySelector('.past-trip-js');
+const displayPresentTripsElement = document.querySelector('.present-trip-js');
+const displayUpcomingTripsElement = document.querySelector('.upcoming-trip-js');
+const displayPendingTripsElement = document.querySelector('.pending-trip-js');
+const totalCostElement = document.querySelector('.total-cost-js');
+const yearDropDown = document.querySelector('.year-drop-down-js');
 
 
-let traveler, trips, tripRepo, destinations, destinationRepo;
+let traveler, trips, tripsRepo, destinations, destinationsRepo;
+const todaysDate = "2020/01/01"
 
-window.addEventListener('load', pageLoad)
+yearDropDown.addEventListener('change', getTotalCostByYear)
 
 Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDestinationsData()])
   .then(data => {
@@ -37,17 +42,53 @@ Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDe
       return acc
     }, {})
     instantiateClasses(travelObj)
+    displayTrips()
   })
   
 function instantiateClasses(obj) {
   traveler = new Traveler(obj);
   trips = obj.trips.map(trip => new Trip(trip));
-  tripRepo = new TripRepo(trips);
+  tripsRepo = new TripsRepo(trips);
   destinations = obj.destinations.map(destination => new Destination(destination));
-  destinationRepo = new DestinationRepo(destinations);
-  console.log(tripRepo)
+  destinationsRepo = new DestinationsRepo(destinations);
 }
 
-function pageLoad() {
-  domUpdates.displayTotalCost(totalCost, destinations, 22, tripRepo)
+function getTotalCostByYear(event) {
+  const chosenYear = event.target.value;
+  const filterTripsByYear = tripsRepo.filterTripsByYear(chosenYear)
+  const filterDestinations = destinationsRepo.filterDestinationsByIds(filterTripsByYear)
+  const totalCost = tripsRepo.calculateTotalTripCostPerYear(filterDestinations, traveler.id)
+  domUpdates.displayTotalCost(totalCostElement, totalCost)
 }
+
+function displayTrips() {
+  displayPastTrips()
+  displayPresntTrips()
+  displayUpcomingTrips()
+  displayPendingTrips()
+}
+
+function displayPastTrips() {
+  const pastTrips = tripsRepo.filterTripsByYear('2019');
+  const pastDestinations = destinationsRepo.filterDestinationsByIds(pastTrips);
+  domUpdates.displaySelectedTrips(displayPastTripsElement, pastTrips, pastDestinations);
+}
+
+function displayPresntTrips() {
+  const presentTrips = tripsRepo.filterTripsByYear('2020');
+  const presentDestinations = destinationsRepo.filterDestinationsByIds(presentTrips);
+  domUpdates.displaySelectedTrips(displayPresentTripsElement, presentTrips, presentDestinations);
+}
+
+function displayUpcomingTrips() {
+  const upcomingTrips = tripsRepo.filterTripsByYear('2021');
+  const upcomingDestinations = destinationsRepo.filterDestinationsByIds(upcomingTrips);
+  domUpdates.displaySelectedTrips(displayUpcomingTripsElement, upcomingTrips, upcomingDestinations);
+}
+function displayPendingTrips() {
+  const pendingTrips = tripsRepo.filterPendingTrips('2019');
+  const pendingDestinations = destinationsRepo.filterDestinationsByIds(pendingTrips);
+  domUpdates.displaySelectedTrips(displayPendingTripsElement, pendingTrips, pendingDestinations);
+}
+
+
