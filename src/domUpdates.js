@@ -22,9 +22,9 @@ const domUpdates = {
       destinations.forEach(destination => {
         if(trip.destinationID === destination.id) {
           element += `<section>
-          <p>${trip.date}</p>
-          <p>${trip.duration} days</p>
-          <p>${destination.destination}</p>
+          <p>Departure Date: ${trip.date}</p>
+          <p>Duration: ${trip.duration} days</p>
+          <p>Location: ${destination.destination}</p>
           <img src=${destination.image} width="50px" height="50px">
           </section>`
         }
@@ -33,6 +33,16 @@ const domUpdates = {
     return element
   },
 
+  displayDestinationDropDown(element, destinationList) {
+    const fragment = document.createDocumentFragment();
+    destinationList.forEach(destination => {
+      const opt = document.createElement('option');
+      opt.innerHTML = destination
+      opt.value = destination
+      fragment.appendChild(opt)
+    })
+    element.appendChild(fragment)
+  },
 }
 
 export default domUpdates;

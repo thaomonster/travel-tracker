@@ -11,23 +11,28 @@ const displayPastTripsElement = document.querySelector('.past-trip-js');
 const displayPresentTripsElement = document.querySelector('.present-trip-js');
 const displayUpcomingTripsElement = document.querySelector('.upcoming-trip-js');
 const displayPendingTripsElement = document.querySelector('.pending-trip-js');
-const totalCostElement = document.querySelector('.total-cost-js');
+const inputNumOfTravelers = document.querySelector('.number-of-travelers')
+const destinationDropDownList = document.querySelector('.destination-drop-down')
 const yearDropDown = document.querySelector('.year-drop-down-js');
-
+const totalCostElement = document.querySelector('.total-cost-js');
 
 let traveler, trips, tripsRepo, destinations, destinationsRepo;
-const todaysDate = "2020/01/01"
+const destinationNames = []
+const todaysDate = "2020/01/01";
 
-yearDropDown.addEventListener('change', getTotalCostByYear)
+yearDropDown.addEventListener('change', getTotalCostByYear);
 
 Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDestinationsData()])
-  .then(data => {
+.then(data => {
     let destArr = []
     let userTrips = data[1].trips.filter(trip => trip.userID === data[0].id)
     data[2].destinations.filter(destination => {
       userTrips.forEach(trip => {
         if (destination.id === trip.destinationID) {
           destArr.push(destination)
+        }
+        if (!destinationNames.includes(destination.destination)) {
+          destinationNames.push(destination.destination)
         }
       })
     })
@@ -66,6 +71,7 @@ function displayTrips() {
   displayPresntTrips()
   displayUpcomingTrips()
   displayPendingTrips()
+  domUpdates.displayDestinationDropDown(destinationDropDownList, destinationNames)
 }
 
 function displayPastTrips() {
@@ -85,10 +91,12 @@ function displayUpcomingTrips() {
   const upcomingDestinations = destinationsRepo.filterDestinationsByIds(upcomingTrips);
   domUpdates.displaySelectedTrips(displayUpcomingTripsElement, upcomingTrips, upcomingDestinations);
 }
+
 function displayPendingTrips() {
   const pendingTrips = tripsRepo.filterPendingTrips('2019');
   const pendingDestinations = destinationsRepo.filterDestinationsByIds(pendingTrips);
   domUpdates.displaySelectedTrips(displayPendingTripsElement, pendingTrips, pendingDestinations);
 }
+
 
 
