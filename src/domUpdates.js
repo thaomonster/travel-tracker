@@ -1,7 +1,7 @@
 const domUpdates = {
   displayTotalCost(element, totalCost) {
     element.innerHTML = '';
-    element.innerHTML = `Total cost with 10% Travel Agent Fee: ${totalCost}`;
+    element.innerHTML = `Total cost with 10% Travel Agent Fee: $git add${totalCost}`;
   },
 
   displayAllTrips(element) {
@@ -34,15 +34,18 @@ const domUpdates = {
   },
 
   displayDestinationDropDown(element, destinationList) {
-    const fragment = document.createDocumentFragment();
     destinationList.forEach(destination => {
       const opt = document.createElement('option');
       opt.innerHTML = destination
       opt.value = destination
-      fragment.appendChild(opt)
+      element.appendChild(opt)
     })
-    element.appendChild(fragment)
   },
+
+  displayEstimatedCost(element, totalCost) {
+    element.innerText = ''
+    element.innerText = `Estimated Cost: $${totalCost}`
+  }
 }
 
 export default domUpdates;

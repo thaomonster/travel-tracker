@@ -38,10 +38,10 @@
     <form class="add-new-trip-form">
       <h1>Add New Trip</h1>
       <p>Start Date 
-        <input type="date" class="calendar" name="calendar" value="2020-01-01">
+        <input type="date" class="calendar-start" name="calendar" value="2020-01-01">
       </p>
       <p>End Date
-        <input type="date" class="calendar" name="calendar" value="2020-02-02">
+        <input type="date" class="calendar-end" name="calendar" value="2020-02-02">
       </p>
       <p>Number of Travelers 
         <input type="number" name="number-of-travelers" class="number-of-travelers" min="0" max="100">
@@ -51,7 +51,8 @@
           <option>Select Destionation</option>
         </select>
       </p>
-      <button>Submit</button>
+      <p class="estimated-cost"></p>
+      <button class="submit-btn-js">Submit</button>
     </form>
   </body>
 </html>

@@ -4,24 +4,15 @@ function getData(path) {
     .catch(error => console.log(error))
 }
 
-// function postData(path) {
-//   return fetch('http://localhost:3001/api/v1/trips', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify({
-//       id: trips.id,
-//       userID: traveler.id,
-//       destinationID: destinations.id,
-//       travelers: inputNumOfTravelers.value,
-//       date: 'YYYY/MM/DD',
-//       duration: 0,
-//       status: 'pending',
-//       suggestedActivities: []
-//     })
-//   })
-// }
+function postData(path, data) {
+  return fetch(path, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+}
 
 let apiCalls = {
   getTravelerData() {
@@ -34,7 +25,11 @@ let apiCalls = {
 
   getDestinationsData() {
     return getData('http://localhost:3001/api/v1/destinations')
-  }
+  },
+
+  addNewTrip(trip) {
+    return postData('http://localhost:3001/api/v1/trips', trip)
+  },
 }
 
 export default apiCalls;
