@@ -1,7 +1,7 @@
 const domUpdates = {
   displayTotalCost(element, totalCost) {
     element.innerHTML = '';
-    element.innerHTML = `Total cost with 10% Travel Agent Fee: ${totalCost}`;
+    element.innerHTML = `Total cost with 10% Travel Agent Fee: $git add${totalCost}`;
   },
 
   displayAllTrips(element) {
@@ -22,9 +22,9 @@ const domUpdates = {
       destinations.forEach(destination => {
         if(trip.destinationID === destination.id) {
           element += `<section>
-          <p>${trip.date}</p>
-          <p>${trip.duration} days</p>
-          <p>${destination.destination}</p>
+          <p>Departure Date: ${trip.date}</p>
+          <p>Duration: ${trip.duration} days</p>
+          <p>Location: ${destination.destination}</p>
           <img src=${destination.image} width="50px" height="50px">
           </section>`
         }
@@ -33,6 +33,19 @@ const domUpdates = {
     return element
   },
 
+  displayDestinationDropDown(element, destinationList) {
+    destinationList.forEach(destination => {
+      const opt = document.createElement('option');
+      opt.innerHTML = destination
+      opt.value = destination
+      element.appendChild(opt)
+    })
+  },
+
+  displayEstimatedCost(element, totalCost) {
+    element.innerText = ''
+    element.innerText = `Estimated Cost: $${totalCost}`
+  }
 }
 
 export default domUpdates;

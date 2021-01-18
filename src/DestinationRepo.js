@@ -13,6 +13,11 @@ class DestinationsRepo {
       return acc
     }, [])
   }
+
+  findDestionationIdByName(name) {
+    const destination = this.destinations.find(destination => destination.destination === name)
+    return destination.id
+  }
 }
 
 export default DestinationsRepo;

@@ -11,25 +11,34 @@ const displayPastTripsElement = document.querySelector('.past-trip-js');
 const displayPresentTripsElement = document.querySelector('.present-trip-js');
 const displayUpcomingTripsElement = document.querySelector('.upcoming-trip-js');
 const displayPendingTripsElement = document.querySelector('.pending-trip-js');
-const totalCostElement = document.querySelector('.total-cost-js');
+const estimatedCostElement = document.querySelector('.estimated-cost')
+const inputNumOfTravelers = document.querySelector('.number-of-travelers');
+const startDate = document.querySelector('.calendar-start');
+const endDate = document.querySelector('.calendar-end');
+const destinationDropDownList = document.querySelector('.destination-drop-down');
 const yearDropDown = document.querySelector('.year-drop-down-js');
-
+const totalCostElement = document.querySelector('.total-cost-js');
+const submitBtn = document.querySelector('.submit-btn-js');
 
 let traveler, trips, tripsRepo, destinations, destinationsRepo;
-const todaysDate = "2020/01/01"
+let newTrip = {status: "pending","suggestedActivities": []}
 
-yearDropDown.addEventListener('change', getTotalCostByYear)
+const destinationNames = [];
+const todaysDate = "2020/01/01";
+
+yearDropDown.addEventListener('change', getTotalCostByYear);
+submitBtn.addEventListener('click', addNewTrip);
+startDate.addEventListener('change', selectStartDate);
+endDate.addEventListener('change', selectEndDate);
+destinationDropDownList.addEventListener('change', selectDestination);
 
 Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDestinationsData()])
-  .then(data => {
-    let destArr = []
+.then(data => {
     let userTrips = data[1].trips.filter(trip => trip.userID === data[0].id)
-    data[2].destinations.filter(destination => {
-      userTrips.forEach(trip => {
-        if (destination.id === trip.destinationID) {
-          destArr.push(destination)
+    data[2].destinations.forEach(destination => {
+        if (!destinationNames.includes(destination.destination)) {
+          destinationNames.push(destination.destination)
         }
-      })
     })
    const travelObj = data.reduce((acc, current) => {
       acc = {
@@ -37,7 +46,7 @@ Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDe
         name: data[0].name,
         travelerType: data[0].travelerType,
         trips: userTrips,
-        destinations: destArr
+        destinations: data[2].destinations
       }
       return acc
     }, {})
@@ -66,6 +75,7 @@ function displayTrips() {
   displayPresntTrips()
   displayUpcomingTrips()
   displayPendingTrips()
+  domUpdates.displayDestinationDropDown(destinationDropDownList, destinationNames)
 }
 
 function displayPastTrips() {
@@ -85,10 +95,46 @@ function displayUpcomingTrips() {
   const upcomingDestinations = destinationsRepo.filterDestinationsByIds(upcomingTrips);
   domUpdates.displaySelectedTrips(displayUpcomingTripsElement, upcomingTrips, upcomingDestinations);
 }
+
 function displayPendingTrips() {
   const pendingTrips = tripsRepo.filterPendingTrips('2019');
   const pendingDestinations = destinationsRepo.filterDestinationsByIds(pendingTrips);
   domUpdates.displaySelectedTrips(displayPendingTripsElement, pendingTrips, pendingDestinations);
 }
 
+function selectStartDate(event) {
+   newTrip.date = event.target.value.replaceAll('-', '/')
+}
+function selectEndDate(event) {
+  const duration = returnDuration(newTrip.date, event.target.value.replaceAll('-', '/'))
+   newTrip.duration = duration
+}
+
+function returnDuration(date1, date2) {
+  const dt1 = new Date(date1);
+  const dt2 = new Date(date2);
+  return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+}
+
+function selectDestination(event) {
+  newTrip.travelers = parseInt(inputNumOfTravelers.value)
+  const selectDestinationId = destinationsRepo.findDestionationIdByName(event.target.value)
+  newTrip.destinationID = selectDestinationId
+  const destinationDetails = destinationsRepo.destinations.find(dest => dest.id === selectDestinationId)
+  const estimatedCost = (destinationDetails.estimatedLodgingCostPerDay * newTrip.duration) + (destinationDetails.estimatedFlightCostPerPerson * newTrip.travelers)
+  const totalCost = Math.round(estimatedCost * 1.1)
+  domUpdates.displayEstimatedCost(estimatedCostElement, totalCost)
+}
+
+function addNewTrip(event) {
+  event.preventDefault()
+  const userNewTrip = {...newTrip, id: Date.now(), userID: traveler.id, travelers: parseInt(inputNumOfTravelers.value)}
+  apiCalls.addNewTrip(userNewTrip)
+    .then(() => {
+      tripsRepo.trips.push(userNewTrip)
+      displayPendingTrips()
+    })
+}
+
+  
 

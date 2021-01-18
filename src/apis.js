@@ -4,6 +4,16 @@ function getData(path) {
     .catch(error => console.log(error))
 }
 
+function postData(path, data) {
+  return fetch(path, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+}
+
 let apiCalls = {
   getTravelerData() {
     return getData('http://localhost:3001/api/v1/travelers/22')
@@ -15,7 +25,11 @@ let apiCalls = {
 
   getDestinationsData() {
     return getData('http://localhost:3001/api/v1/destinations')
-  }
+  },
+
+  addNewTrip(trip) {
+    return postData('http://localhost:3001/api/v1/trips', trip)
+  },
 }
 
 export default apiCalls;
