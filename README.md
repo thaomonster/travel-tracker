@@ -7,8 +7,6 @@
 * [Features](#features)
 * [Technologies](#technologies)
 * [Deployment/Setup](#deployment)
-* [Continuous Improvement/Future Improvements](#Continuous-Improvement/Future-Improvements)
-* [How to Contribute](#contirbute)
 * [Authors](#authors)
 * [Contributors](#contributors)
 
@@ -26,6 +24,7 @@ The motivation behind this projects creation was to build an application to help
 * [Calculate Annual Trip Cost](#calculate-annual-trip-cost)
 * [Add New Trip](#add-new-trip)
 * [Logout](#logout)
+* [Continuous Improvement/Future Improvements](#Continuous-Improvement/Future-Improvements)
 
 #### Login Page
 Upon page load, a login will appear where a Traveler will need to input their username and password. An error will appear if the user enters a wrong username or password.
@@ -115,9 +114,7 @@ If you are interested in contributing please:
 </table>
 
 ## Contributors
-  <tr>
-    Thank you to our contributors<td> Elle Li <a href="https://github.com/Elle624">GH</td>
-  </tr>
-  <tr>Background Photo by Chris Lawton on Unsplash</tr>
+
+Thank you <a href="https://github.com/Elle624">Elle Li</a> and Background Photo by Chris Lawton on Unsplash.
   
       
