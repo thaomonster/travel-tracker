@@ -27,7 +27,7 @@ const domUpdates = {
           <p>Departure Date: ${trip.date}</p>
           <p>Duration: ${trip.duration} days</p>
           <p>Location: ${destination.destination}</p>
-          <img src=${destination.image}>
+          <img src=${destination.image} alt="image of ${destination.destination}">
           </section>`
         }
       })
