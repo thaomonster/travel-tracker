@@ -53,8 +53,13 @@ const domUpdates = {
     element.style.display = 'block';
   },
 
-  exitModal(element) {
+  hideModal(element) {
     element.style.display = 'none';
+  },
+
+  displayLoginErrorMsg(element) {
+    element.innerText = '';
+    element.innerText = `Username or password is incorrect. Please try again.`
   },
 }
 

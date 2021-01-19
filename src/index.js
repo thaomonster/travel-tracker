@@ -13,6 +13,7 @@ const displayUpcomingTripsElement = document.querySelector('.upcoming-trip-js');
 const displayPendingTripsElement = document.querySelector('.pending-trip-js');
 const estimatedCostElement = document.querySelector('.estimated-cost');
 const totalCostElement = document.querySelector('.total-cost-js');
+const loginErrorMsg = document.querySelector('.login-error-msg')
 const addNewTripModal = document.querySelector('.add-new-trip-modal-js');
 
 const inputNumOfTravelers = document.querySelector('.number-of-travelers-js');
@@ -23,20 +24,29 @@ const yearDropDown = document.querySelector('.year-drop-down-js');
 const submitBtn = document.querySelector('.submit-btn-js');
 const addNewTripBtn = document.querySelector('.add-trip-btn-js');
 const modalExitBtn = document.querySelector('.exit-btn-js');
+const usernameInput = document.querySelector('.username-input');
+const passwordInput = document.querySelector('.password-input');
+const loginBtn = document.querySelector('.login-btn-js');
+const logoutBtn = document.querySelector('.logout-btn-js');
+
+const mainPage = document.querySelector('.main');
+const loginPage = document.querySelector('.login-form-js');
 
 let traveler, trips, tripsRepo, destinations, destinationsRepo;
 let newTrip = {status: "pending","suggestedActivities": []};
 
 const destinationNames = [];
-const todaysDate = "2020/01/01";
 
 yearDropDown.addEventListener('change', getTotalCostByYear);
-submitBtn.addEventListener('click', addNewTrip);
 startDate.addEventListener('change', selectStartDate);
 endDate.addEventListener('change', selectEndDate);
 destinationDropDownList.addEventListener('change', selectDestination);
+
+submitBtn.addEventListener('click', addNewTrip);
 addNewTripBtn.addEventListener('click', openModal);
 modalExitBtn.addEventListener('click', closeModal);
+loginBtn.addEventListener('click', checkUsernameAndPassword);
+logoutBtn.addEventListener('click', logOut);
 
 Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDestinationsData()])
 .then(data => {
@@ -141,7 +151,7 @@ function addNewTrip(event) {
       tripsRepo.trips.push(userNewTrip);
       displayPendingTrips();
     });
-  domUpdates.exitModal(addNewTripModal);
+  domUpdates.hideModal(addNewTripModal);
 }
 
 function openModal() {
@@ -149,8 +159,24 @@ function openModal() {
 }
 
 function closeModal() {
-  domUpdates.exitModal(addNewTripModal);
+  domUpdates.hideModal(addNewTripModal);
 }
 
-  
+function togglePages(pageOne, pageTwo, button) {
+  pageOne.classList.toggle('hidden');
+  pageTwo.classList.toggle('hidden');
+  button.classList.toggle('hidden');
+}
 
+function checkUsernameAndPassword(event) {
+  event.preventDefault()
+  if (usernameInput.value === 'traveler22' && passwordInput.value === 'travel2020') {
+    togglePages(loginPage, mainPage, logoutBtn);
+  } else {
+    domUpdates.displayLoginErrorMsg(loginErrorMsg)
+  }
+}
+  
+function logOut() {
+  togglePages(loginPage, mainPage, logoutBtn);
+}
