@@ -180,7 +180,3 @@ function checkUsernameAndPassword(event) {
 function logOut() {
   togglePages(loginPage, mainPage, logoutBtn);
 }
-
-function refreshPage() {
-  togglePages(loginPage, mainPage, logoutBtn);
-}
