@@ -7,52 +7,55 @@
   <body>
     <header>
       <h1>Travel Tracker</h1>
-      <button class="logout-btn">Logout</button>
+      <button class="logout-btn" aria-label="logout-button-for-user-to-go-to-login-page">Logout</button>
     </header>
-    <section class="main">
+    <section>
       <div class="sub-header">
-        <button class="add-trip-btn">Add New Trip</button>
-          <select class="year-drop-down-js">
+        <button class="add-trip-btn add-trip-btn-js" aria-label="button-to-add-new-trip">Add New Trip</button>
+          <select class="year-drop-down year-drop-down-js" aria-label="drop-down-menu-to-select-year">
             <option>Select Year</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
+            <option value="2019" aria-label="year-2019">2019</option>
+            <option value="2020" aria-label="year-2020">2020</option>
           </select> 
-          <p class="total-cost total-cost-js"></p>
+          <p class="total-cost total-cost-js">Total cost with 10% Travel Agent Fee:</p>
       </div>
-      <section class="users-trips-section">
-        <article class="widgets past-trip-js">Past</article>
-        <article class="widgets present-trip-js">Present</article>
-        <article class="widgets upcoming-trip-js">Upcoming</article>
-        <article class="widgets pending-trip-js">Pending</article>
-      </section>
+      <article class="users-trips-section">
+        <div class="widgets past-trip-js">Past</div>
+        <div class="widgets present-trip-js">Present</div>
+        <div class="widgets upcoming-trip-js">Upcoming</div>
+        <div class="widgets pending-trip-js">Pending</div>
+      </article>
     </section>
     <form class="login-form hidden">
       <p class="login-credentials">Username
-        <input type="text" class="login-input" name="username" maxlenght="30">
+        <input type="text" class="login-input" name="username" maxlenght="30" aria-label="username-login-input">
       </p>
       <p class="login-credentials">Password
-        <input type="password" class="login-input" name="password" maxlength="30">
+        <input type="password" class="login-input" name="password" maxlength="30" aria-label="users-password-input">
       </p>
-      <button class="login-btn">Login</button>
+      <button class="login-btn" aria-label="login-button">Login</button>
     </form>
-    <form class="add-new-trip-form">
-      <h1>Add New Trip</h1>
-      <p>Start Date 
-        <input type="date" class="calendar-start" name="calendar" value="2020-01-01">
+    <div class="add-new-trip-modal add-new-trip-modal-js">
+      <h1>
+        Add New Trip
+        <button class="exit-btn exit-btn-js" aria-label="exit-modal-button">Exit</button>
+      </h1>
+      <p class="modal-styling">Start Date 
+        <input type="date" class="calendar-start" name="calendar" value="2020-01-01" aria-label="calendar-to-select-a-start-date">
       </p>
-      <p>End Date
-        <input type="date" class="calendar-end" name="calendar" value="2020-02-02">
+      <p class="modal-styling">End Date
+        <input type="date" class="calendar-end" name="calendar" value="2020-02-02" aria-label="calendar-to-select-an-end-date">
       </p>
-      <p>Number of Travelers 
-        <input type="number" name="number-of-travelers" class="number-of-travelers" min="0" max="100">
+      <p class="modal-styling">Number of Travelers 
+        <input type="number" name="number-of-travelers" class="number-of-travelers-js" min="0" max="100" aria-label="input-number-of-travelers">
       </p>
-      <p>Destinations 
-        <select class="destination-drop-down">
+      <p class="modal-styling">Destinations 
+        <select class="destination-drop-down" aria-label="drop-down-menu-of-destinations">
           <option>Select Destionation</option>
         </select>
       </p>
-      <p class="estimated-cost"></p>
-      <button class="submit-btn-js">Submit</button>
-    </form>
+      <p class="estimated-cost modal-styling"></p>
+      <button class="submit-btn submit-btn-js modal-styling" aria-label="submit-button-to-add-new-trip">Submit</button>
+    </div>
   </body>
 </html>

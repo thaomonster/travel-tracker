@@ -8,3 +8,9 @@ $button-background: #CCCCD8ff;
   background-color: #A1ABACff;
   opacity: 0.8;
 }
+
+@mixin mainBodyStyle() {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+}

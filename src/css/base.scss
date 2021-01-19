@@ -11,13 +11,22 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+img {
+  height: 10em;
+  width: 15em;
+}
+
 h1 {
-  display: flex;
   font-size: 2em;
   color: white;
   background-color: $header-background;
   padding: 0.5%; 
   margin: 0%;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
 }
 
 header {
@@ -39,21 +48,21 @@ header {
   @include widgetStyles();
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
+.sub-header {
+  @include mainBodyStyle();
 }
 
-.sub-header,
 .users-trips-section {
-  display: flex;
-  flex-direction: row;
+  @include mainBodyStyle();
   justify-content: space-around;
-  margin-top: 2%;
 }
 
-.total-cost, 
+.total-cost {
+  font-size: 1.5em;
+  @include widgetStyles();
+}
+
 .widgets {
-  font-size: 1.2em;
+  font-size: 1em;
   @include widgetStyles();
 }
