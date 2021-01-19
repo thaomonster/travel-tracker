@@ -74,7 +74,7 @@ Once a user finishes will all that they want to do on the webpage a user can cli
 ## Deployment/Setup
 
 ### Deployment
-Visit the site at [GitHub Pages]()
+Visit the site at [GitHub Pages](http://thaomonster.github.io/travel-tracker)
 
 ### Setup
 In order to deploy this site locally, a user will have to run a local server.
