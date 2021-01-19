@@ -24,7 +24,7 @@ The motivation behind this projects creation was to build an application to help
 * [Calculate Annual Trip Cost](#calculate-annual-trip-cost)
 * [Add New Trip](#add-new-trip)
 * [Logout](#logout)
-* [Continuous Improvement/Future Improvements](#Continuous-Improvement/Future-Improvements)
+* [Improvement/Future Improvements](#Improvement/Future-Improvements)
 
 #### Login Page
 Upon page load, a login will appear where a Traveler will need to input their username and password. An error will appear if the user enters a wrong username or password.
