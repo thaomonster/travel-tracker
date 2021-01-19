@@ -3,25 +3,29 @@ import Traveler from '../src/Traveler';
 import Trip from './Trip';
 import TripsRepo from './TripRepo';
 import Destination from './Destination';
-import DestinationsRepo from './DestinationRepo'
-import apiCalls from '../src/apis'
-import domUpdates from '../src/domUpdates'
+import DestinationsRepo from './DestinationRepo';
+import apiCalls from '../src/apis';
+import domUpdates from '../src/domUpdates';
 
 const displayPastTripsElement = document.querySelector('.past-trip-js');
 const displayPresentTripsElement = document.querySelector('.present-trip-js');
 const displayUpcomingTripsElement = document.querySelector('.upcoming-trip-js');
 const displayPendingTripsElement = document.querySelector('.pending-trip-js');
-const estimatedCostElement = document.querySelector('.estimated-cost')
-const inputNumOfTravelers = document.querySelector('.number-of-travelers');
+const estimatedCostElement = document.querySelector('.estimated-cost');
+const totalCostElement = document.querySelector('.total-cost-js');
+const addNewTripModal = document.querySelector('.add-new-trip-modal-js');
+
+const inputNumOfTravelers = document.querySelector('.number-of-travelers-js');
 const startDate = document.querySelector('.calendar-start');
 const endDate = document.querySelector('.calendar-end');
 const destinationDropDownList = document.querySelector('.destination-drop-down');
 const yearDropDown = document.querySelector('.year-drop-down-js');
-const totalCostElement = document.querySelector('.total-cost-js');
 const submitBtn = document.querySelector('.submit-btn-js');
+const addNewTripBtn = document.querySelector('.add-trip-btn-js');
+const modalExitBtn = document.querySelector('.exit-btn-js');
 
 let traveler, trips, tripsRepo, destinations, destinationsRepo;
-let newTrip = {status: "pending","suggestedActivities": []}
+let newTrip = {status: "pending","suggestedActivities": []};
 
 const destinationNames = [];
 const todaysDate = "2020/01/01";
@@ -31,6 +35,8 @@ submitBtn.addEventListener('click', addNewTrip);
 startDate.addEventListener('change', selectStartDate);
 endDate.addEventListener('change', selectEndDate);
 destinationDropDownList.addEventListener('change', selectDestination);
+addNewTripBtn.addEventListener('click', openModal);
+modalExitBtn.addEventListener('click', closeModal);
 
 Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDestinationsData()])
 .then(data => {
@@ -52,7 +58,7 @@ Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDe
     }, {})
     instantiateClasses(travelObj)
     displayTrips()
-  })
+  });
   
 function instantiateClasses(obj) {
   traveler = new Traveler(obj);
@@ -64,18 +70,18 @@ function instantiateClasses(obj) {
 
 function getTotalCostByYear(event) {
   const chosenYear = event.target.value;
-  const filterTripsByYear = tripsRepo.filterTripsByYear(chosenYear)
-  const filterDestinations = destinationsRepo.filterDestinationsByIds(filterTripsByYear)
-  const totalCost = tripsRepo.calculateTotalTripCostPerYear(filterDestinations, traveler.id)
-  domUpdates.displayTotalCost(totalCostElement, totalCost)
+  const filterTripsByYear = tripsRepo.filterTripsByYear(chosenYear);
+  const filterDestinations = destinationsRepo.filterDestinationsByIds(filterTripsByYear);
+  const totalCost = tripsRepo.calculateTotalTripCostPerYear(filterDestinations, traveler.id);
+  domUpdates.displayTotalCost(totalCostElement, totalCost);
 }
 
 function displayTrips() {
-  displayPastTrips()
-  displayPresntTrips()
-  displayUpcomingTrips()
-  displayPendingTrips()
-  domUpdates.displayDestinationDropDown(destinationDropDownList, destinationNames)
+  displayPastTrips();
+  displayPresntTrips();
+  displayUpcomingTrips();
+  displayPendingTrips();
+  domUpdates.displayDestinationDropDown(destinationDropDownList, destinationNames);
 }
 
 function displayPastTrips() {
@@ -103,11 +109,12 @@ function displayPendingTrips() {
 }
 
 function selectStartDate(event) {
-   newTrip.date = event.target.value.replaceAll('-', '/')
+   newTrip.date = event.target.value.replaceAll('-', '/');
 }
+
 function selectEndDate(event) {
-  const duration = returnDuration(newTrip.date, event.target.value.replaceAll('-', '/'))
-   newTrip.duration = duration
+  const duration = returnDuration(newTrip.date, event.target.value.replaceAll('-', '/'));
+   newTrip.duration = duration;
 }
 
 function returnDuration(date1, date2) {
@@ -117,23 +124,31 @@ function returnDuration(date1, date2) {
 }
 
 function selectDestination(event) {
-  newTrip.travelers = parseInt(inputNumOfTravelers.value)
-  const selectDestinationId = destinationsRepo.findDestionationIdByName(event.target.value)
+  newTrip.travelers = parseInt(inputNumOfTravelers.value);
+  const selectDestinationId = destinationsRepo.findDestionationIdByName(event.target.value);
   newTrip.destinationID = selectDestinationId
-  const destinationDetails = destinationsRepo.destinations.find(dest => dest.id === selectDestinationId)
+  const destinationDetails = destinationsRepo.destinations.find(dest => dest.id === selectDestinationId);
   const estimatedCost = (destinationDetails.estimatedLodgingCostPerDay * newTrip.duration) + (destinationDetails.estimatedFlightCostPerPerson * newTrip.travelers)
-  const totalCost = Math.round(estimatedCost * 1.1)
-  domUpdates.displayEstimatedCost(estimatedCostElement, totalCost)
+  const totalCost = Math.round(estimatedCost * 1.1);
+  domUpdates.displayEstimatedCost(estimatedCostElement, totalCost);
 }
 
 function addNewTrip(event) {
-  event.preventDefault()
+  event.preventDefault();
   const userNewTrip = {...newTrip, id: Date.now(), userID: traveler.id, travelers: parseInt(inputNumOfTravelers.value)}
   apiCalls.addNewTrip(userNewTrip)
     .then(() => {
-      tripsRepo.trips.push(userNewTrip)
-      displayPendingTrips()
-    })
+      tripsRepo.trips.push(userNewTrip);
+      displayPendingTrips();
+    });
+}
+
+function openModal() {
+  domUpdates.displayModal(addNewTripModal);
+}
+
+function closeModal() {
+  domUpdates.exitModal(addNewTripModal);
 }
 
   

@@ -10,16 +10,16 @@ const domUpdates = {
   },
 
   displaySelectedTrips(element, title, trips, destinations) {
-    element.innerHTML = ''
+    element.innerHTML = '';
     element.innerHTML = `
     <section>
       <h2>${title}</h2>
     ${this.displayTripDetails(trips, destinations)}
-    </section>`
+    </section>`;
   },
 
   displayTripDetails(trips, destinations) {
-    let element = ''
+    let element = '';
     trips.forEach(trip => {
       destinations.forEach(destination => {
         if(trip.destinationID === destination.id) {
@@ -38,16 +38,24 @@ const domUpdates = {
   displayDestinationDropDown(element, destinationList) {
     destinationList.forEach(destination => {
       const opt = document.createElement('option');
-      opt.innerHTML = destination
-      opt.value = destination
-      element.appendChild(opt)
+      opt.innerHTML = destination;
+      opt.value = destination;
+      element.appendChild(opt);
     })
   },
 
   displayEstimatedCost(element, totalCost) {
-    element.innerText = ''
-    element.innerText = `Estimated Cost With 10% Travel Agent Fee: $${totalCost}`
-  }
+    element.innerText = '';
+    element.innerText = `Estimated Cost With 10% Travel Agent Fee: $${totalCost}`;
+  },
+
+  displayModal(element) {
+    element.style.display = 'block';
+  },
+
+  exitModal(element) {
+    element.style.display = 'none';
+  },
 }
 
 export default domUpdates;
