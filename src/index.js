@@ -68,7 +68,7 @@ Promise.all([apiCalls.getTravelerData(), apiCalls.getTripsData(), apiCalls.getDe
     }, {})
     instantiateClasses(travelObj)
     displayTrips()
-  });
+  })
   
 function instantiateClasses(obj) {
   traveler = new Traveler(obj);
@@ -138,7 +138,7 @@ function selectDestination(event) {
   const selectDestinationId = destinationsRepo.findDestionationIdByName(event.target.value);
   newTrip.destinationID = selectDestinationId
   const destinationDetails = destinationsRepo.destinations.find(dest => dest.id === selectDestinationId);
-  const estimatedCost = (destinationDetails.estimatedLodgingCostPerDay * newTrip.duration) + (destinationDetails.estimatedFlightCostPerPerson * newTrip.travelers)
+  const estimatedCost = (destinationDetails.estimatedLodgingCostPerDay * newTrip.duration) + (destinationDetails.estimatedFlightCostPerPerson * newTrip.travelers);
   const totalCost = Math.round(estimatedCost * 1.1);
   domUpdates.displayEstimatedCost(estimatedCostElement, totalCost);
 }
@@ -173,7 +173,7 @@ function checkUsernameAndPassword(event) {
   if (usernameInput.value === 'traveler22' && passwordInput.value === 'travel2020') {
     togglePages(loginPage, mainPage, logoutBtn);
   } else {
-    domUpdates.displayLoginErrorMsg(loginErrorMsg)
+    domUpdates.displayLoginErrorMsg(loginErrorMsg);
   }
 }
   

@@ -2,9 +2,9 @@
 .add-trip-btn,
 .year-drop-down {
   background-color: $button-background;
-  margin: 1.2% 1.2% 1.2% 21%;
+  margin: 1.5% 1% 1% 5%;
   padding: 0 2%;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 button {
@@ -14,7 +14,7 @@ button {
 
 .logout-btn {
   background-color: $button-background;
-  font-size: 0.8em;
+  font-size: 1.2em;
   margin: 0.6%;
   padding: 0 2%;
 }
@@ -22,12 +22,17 @@ button {
 // Modal Buttons
 .exit-btn {
   background-color: $button-background;
-  margin-left: 65%;
+  margin-left: 75%;
   font-size: 0.8em;
   padding: 0.5%;
 }
 
+.form-btn-styling {
+  font-size: 1em;
+}
+
 .submit-btn {
+  background-color: #7E8671ff;
   margin: 0 0 0 49%;
   font-size: 1.5em;
   padding: 0.5%;
@@ -39,6 +44,15 @@ button {
   padding: 0.5% 6%;
 }
 
+.login-credentials {
+  padding: 1%;
+  margin: 0;
+}
+
+.login-input {
+  padding: 1%;
+  font-size: 0.9em;
+}
 
 
 
