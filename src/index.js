@@ -141,6 +141,7 @@ function addNewTrip(event) {
       tripsRepo.trips.push(userNewTrip);
       displayPendingTrips();
     });
+  domUpdates.exitModal(addNewTripModal);
 }
 
 function openModal() {
