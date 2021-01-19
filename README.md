@@ -7,7 +7,8 @@
 * [Features](#features)
 * [Technologies](#technologies)
 * [Deployment/Setup](#deployment)
-* [How to Contribute](#how-to-contibute)
+* [Continuous Improvement/Future Improvements](#Continuous-Improvement/Future-Improvements)
+* [How to Contribute](#contirbute)
 * [Authors](#authors)
 * [Contributors](#contributors)
 
@@ -25,7 +26,6 @@ The motivation behind this projects creation was to build an application to help
 * [Calculate Annual Trip Cost](#calculate-annual-trip-cost)
 * [Add New Trip](#add-new-trip)
 * [Logout](#logout)
-* [Continuous Improvement/Future Improvements](#Continuous-Improvement/Future-Improvements)
 
 #### Login Page
 Upon page load, a login will appear where a Traveler will need to input their username and password. An error will appear if the user enters a wrong username or password.
@@ -108,8 +108,7 @@ If you are interested in contributing please:
 <table>
     <tr>
         <td> Thao Ma <a href="https://github.com/thaomonster">GH</td>
-    </tr>
-    </tr>
+ </tr>
 
 <td><img src="https://avatars3.githubusercontent.com/u/67611512?s=400&u=ef3bac38d4f7d6d8a899d26ce1f0eb169f11bb9b&v=4" alt="Ms. Turtle"
  width="150" height="auto" /></td>
@@ -117,8 +116,8 @@ If you are interested in contributing please:
 
 ## Contributors
   <tr>
-    <td> Elle Li <a href="https://github.com/Elle624">GH</td>
-    <td> Background Photo by Chris Lawton on Unsplash</td>
+    Thank you to our contributors<td> Elle Li <a href="https://github.com/Elle624">GH</td>
   </tr>
+  <tr>Background Photo by Chris Lawton on Unsplash</tr>
   
       
