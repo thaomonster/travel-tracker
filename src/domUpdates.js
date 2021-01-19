@@ -22,7 +22,7 @@ const domUpdates = {
     let element = '';
     trips.forEach(trip => {
       destinations.forEach(destination => {
-        if(trip.destinationID === destination.id) {
+        if (trip.destinationID === destination.id) {
           element += `<div>
           <p>Departure Date: ${trip.date}</p>
           <p>Duration: ${trip.duration} days</p>

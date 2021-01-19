@@ -6,7 +6,7 @@ class DestinationsRepo {
   filterDestinationsByIds(trips) {
     return trips.reduce((acc, trip) => {
       this.destinations.forEach(destination => {
-        if(trip.destinationID === destination.id) {
+        if (trip.destinationID === destination.id) {
           acc.push(destination)
         }
       })
