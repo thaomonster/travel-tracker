@@ -81,25 +81,25 @@ function displayTrips() {
 function displayPastTrips() {
   const pastTrips = tripsRepo.filterTripsByYear('2019');
   const pastDestinations = destinationsRepo.filterDestinationsByIds(pastTrips);
-  domUpdates.displaySelectedTrips(displayPastTripsElement, pastTrips, pastDestinations);
+  domUpdates.displaySelectedTrips(displayPastTripsElement, 'Past Trips', pastTrips, pastDestinations);
 }
 
 function displayPresntTrips() {
   const presentTrips = tripsRepo.filterTripsByYear('2020');
   const presentDestinations = destinationsRepo.filterDestinationsByIds(presentTrips);
-  domUpdates.displaySelectedTrips(displayPresentTripsElement, presentTrips, presentDestinations);
+  domUpdates.displaySelectedTrips(displayPresentTripsElement, 'Present Trips',presentTrips, presentDestinations);
 }
 
 function displayUpcomingTrips() {
   const upcomingTrips = tripsRepo.filterTripsByYear('2021');
   const upcomingDestinations = destinationsRepo.filterDestinationsByIds(upcomingTrips);
-  domUpdates.displaySelectedTrips(displayUpcomingTripsElement, upcomingTrips, upcomingDestinations);
+  domUpdates.displaySelectedTrips(displayUpcomingTripsElement, 'Upcoming Trips',upcomingTrips, upcomingDestinations);
 }
 
 function displayPendingTrips() {
   const pendingTrips = tripsRepo.filterPendingTrips('2019');
   const pendingDestinations = destinationsRepo.filterDestinationsByIds(pendingTrips);
-  domUpdates.displaySelectedTrips(displayPendingTripsElement, pendingTrips, pendingDestinations);
+  domUpdates.displaySelectedTrips(displayPendingTripsElement, 'Pending Trips',pendingTrips, pendingDestinations);
 }
 
 function selectStartDate(event) {

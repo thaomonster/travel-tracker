@@ -1,7 +1,7 @@
 const domUpdates = {
   displayTotalCost(element, totalCost) {
     element.innerHTML = '';
-    element.innerHTML = `Total cost with 10% Travel Agent Fee: $git add${totalCost}`;
+    element.innerHTML = `Total cost with 10% Travel Agent Fee: $${totalCost}`;
   },
 
   displayAllTrips(element) {
@@ -9,9 +9,11 @@ const domUpdates = {
     element.innerHTML += `${this.displaySelected()}`
   },
 
-  displaySelectedTrips(element, trips, destinations) {
+  displaySelectedTrips(element, title, trips, destinations) {
     element.innerHTML = ''
-    element.innerHTML = `<section>
+    element.innerHTML = `
+    <section>
+      <h2>${title}</h2>
     ${this.displayTripDetails(trips, destinations)}
     </section>`
   },
@@ -25,7 +27,7 @@ const domUpdates = {
           <p>Departure Date: ${trip.date}</p>
           <p>Duration: ${trip.duration} days</p>
           <p>Location: ${destination.destination}</p>
-          <img src=${destination.image} width="50px" height="50px">
+          <img src=${destination.image}>
           </section>`
         }
       })
@@ -44,7 +46,7 @@ const domUpdates = {
 
   displayEstimatedCost(element, totalCost) {
     element.innerText = ''
-    element.innerText = `Estimated Cost: $${totalCost}`
+    element.innerText = `Estimated Cost With 10% Travel Agent Fee: $${totalCost}`
   }
 }
 

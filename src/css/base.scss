@@ -11,6 +11,11 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+img {
+  height: 10em;
+  width: 15em;
+}
+
 h1 {
   display: flex;
   font-size: 2em;
@@ -18,6 +23,11 @@ h1 {
   background-color: $header-background;
   padding: 0.5%; 
   margin: 0%;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
 }
 
 header {
@@ -44,16 +54,21 @@ header {
   flex-direction: column;
 }
 
-.sub-header,
-.users-trips-section {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: 2%;
+.sub-header {
+  @include mainBodyStyle();
 }
 
-.total-cost, 
+.users-trips-section {
+  @include mainBodyStyle();
+  justify-content: space-around;
+}
+
+.total-cost {
+  font-size: 1.5em;
+  @include widgetStyles();
+}
+
 .widgets {
-  font-size: 1.2em;
+  font-size: 1em;
   @include widgetStyles();
 }
