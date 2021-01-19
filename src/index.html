@@ -7,9 +7,9 @@
   <body>
     <header>
       <h1>Travel Tracker</h1>
-      <button class="logout-btn" aria-label="logout-button-for-user-to-go-to-login-page">Logout</button>
+      <button class="logout-btn logout-btn-js hidden" aria-label="logout-button-for-user-to-go-to-login-page">Logout</button>
     </header>
-    <section>
+    <section class="main hidden">
       <div class="sub-header">
         <button class="add-trip-btn add-trip-btn-js" aria-label="button-to-add-new-trip">Add New Trip</button>
           <select class="year-drop-down year-drop-down-js" aria-label="drop-down-menu-to-select-year">
@@ -26,14 +26,15 @@
         <div class="widgets pending-trip-js">Pending</div>
       </article>
     </section>
-    <form class="login-form hidden">
+    <form class="login-form login-form-js">
       <p class="login-credentials">Username
-        <input type="text" class="login-input" name="username" maxlenght="30" aria-label="username-login-input">
+        <input type="text" class="login-input username-input" value="" name="username" maxlenght="30" aria-label="username-login-input">
       </p>
       <p class="login-credentials">Password
-        <input type="password" class="login-input" name="password" maxlength="30" aria-label="users-password-input">
+        <input type="password" class="login-input password-input" name="password" maxlength="30" aria-label="users-password-input">
       </p>
-      <button class="login-btn" aria-label="login-button">Login</button>
+      <p class="login-error-msg"></p>
+      <button class="login-btn, login-btn-js" aria-label="login-button">Login</button>
     </form>
     <div class="add-new-trip-modal add-new-trip-modal-js">
       <h1>
