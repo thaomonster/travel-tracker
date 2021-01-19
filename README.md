@@ -7,7 +7,7 @@
 * [Features](#features)
 * [Technologies](#technologies)
 * [Deployment/Setup](#deployment)
-* [How to Contribute](#How-to-Contribute)
+* [How to Contribute](#how-to-contibute)
 * [Authors](#authors)
 * [Contributors](#contributors)
 
@@ -20,14 +20,14 @@ The motivation behind this projects creation was to build an application to help
 
 ---
 ## Features
-* [Login Page](#Login-Page)
-* [Dashboard](#Dashboard)
-* [Calculate Annual Trip Cost](#Calculate-Annual-Trip-Cost)
-* [Add New Trip](#Add-New-Trip)
-* [Logout](#Logout)
+* [Login Page](#login-page)
+* [Dashboard](#dashboard)
+* [Calculate Annual Trip Cost](#calculate-annual-trip-cost)
+* [Add New Trip](#add-new-trip)
+* [Logout](#logout)
 * [Continuous Improvement/Future Improvements](#Continuous-Improvement/Future-Improvements)
 
-#### Login-Page
+#### Login Page
 Upon page load, a login will appear where a Traveler will need to input their username and password. An error will appear if the user enters a wrong username or password.
 
 <p align = "center">
