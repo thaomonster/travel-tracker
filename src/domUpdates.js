@@ -23,12 +23,12 @@ const domUpdates = {
     trips.forEach(trip => {
       destinations.forEach(destination => {
         if(trip.destinationID === destination.id) {
-          element += `<section>
+          element += `<div>
           <p>Departure Date: ${trip.date}</p>
           <p>Duration: ${trip.duration} days</p>
           <p>Location: ${destination.destination}</p>
           <img src=${destination.image} alt="image of ${destination.destination}">
-          </section>`
+          </div>`
         }
       })
     })

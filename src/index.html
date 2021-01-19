@@ -28,13 +28,13 @@
     </section>
     <form class="login-form login-form-js">
       <p class="login-credentials">Username
-        <input type="text" class="login-input username-input" value="" name="username" maxlenght="30" aria-label="username-login-input">
+        <input type="text" class="login-input username-input" name="username" maxlenght="30" aria-label="username-login-input">
       </p>
       <p class="login-credentials">Password
         <input type="password" class="login-input password-input" name="password" maxlength="30" aria-label="users-password-input">
       </p>
       <p class="login-error-msg"></p>
-      <button class="login-btn, login-btn-js" aria-label="login-button">Login</button>
+      <button class="login-btn login-btn-js" aria-label="login-button">Login</button>
     </form>
     <div class="add-new-trip-modal add-new-trip-modal-js">
       <h1>
@@ -42,19 +42,19 @@
         <button class="exit-btn exit-btn-js" aria-label="exit-modal-button">Exit</button>
       </h1>
       <p class="modal-styling">Start Date 
-        <input type="date" class="calendar-start" name="calendar" value="2020-01-01" aria-label="calendar-to-select-a-start-date">
+        <input type="date" class="calendar-start form-btn-styling" name="calendar" value="2020-01-01" aria-label="calendar-to-select-a-start-date">
       </p>
       <p class="modal-styling">End Date
-        <input type="date" class="calendar-end" name="calendar" value="2020-02-02" aria-label="calendar-to-select-an-end-date">
+        <input type="date" class="calendar-end form-btn-styling" name="calendar" value="2020-02-02" aria-label="calendar-to-select-an-end-date">
       </p>
       <p class="modal-styling">Number of Travelers 
-        <input type="number" name="number-of-travelers" class="number-of-travelers-js" min="0" max="100" aria-label="input-number-of-travelers">
+        <input type="number" name="number-of-travelers form-btn-styling" class="number-of-travelers-js" min="0" max="100" aria-label="input-number-of-travelers">
       </p>
-      <p class="modal-styling">Destinations 
-        <select class="destination-drop-down" aria-label="drop-down-menu-of-destinations">
+      <div class="modal-styling">Destinations 
+        <select class="destination-drop-down form-btn-styling" aria-label="drop-down-menu-of-destinations">
           <option>Select Destionation</option>
         </select>
-      </p>
+      </div>
       <p class="estimated-cost modal-styling"></p>
       <button class="submit-btn submit-btn-js modal-styling" aria-label="submit-button-to-add-new-trip">Submit</button>
     </div>

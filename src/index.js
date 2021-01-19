@@ -37,6 +37,7 @@ let newTrip = {status: "pending","suggestedActivities": []};
 
 const destinationNames = [];
 
+window.addEventListener('load', refreshPage)
 yearDropDown.addEventListener('change', getTotalCostByYear);
 startDate.addEventListener('change', selectStartDate);
 endDate.addEventListener('change', selectEndDate);
@@ -178,5 +179,9 @@ function checkUsernameAndPassword(event) {
 }
   
 function logOut() {
+  togglePages(loginPage, mainPage, logoutBtn);
+}
+
+function refreshPage() {
   togglePages(loginPage, mainPage, logoutBtn);
 }
