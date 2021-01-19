@@ -1,25 +1,25 @@
 import { expect } from 'chai';
 import Trip from '../src/Trip';
-import TripRepo from '../src/TripRepo';
-import sampleTripData from '../test/test-data/trip-data';
+import TripsRepo from '../src/TripsRepo';
+import sampleTripData from './test-data/trip-data';
 
 describe('TripRepo Class', () => {
-  let trip1, trip2, trip3, tripRepo;
+  let trip1, trip2, trip3, tripsRepo;
   
   beforeEach(() => {
     trip1 = new Trip(sampleTripData.trips[0]);
     trip2 = new Trip(sampleTripData.trips[1]);
     trip3 = new Trip(sampleTripData.trips[2]);
-    tripRepo = new TripRepo([trip1, trip2, trip3]);
+    tripsRepo = new TripsRepo([trip1, trip2, trip3]);
   })
   
   describe('Intitialize', () => {
-    it('should be an instance of TripRepo', () => {
-      expect(tripRepo).to.be.an.instanceOf(TripRepo);
+    it('should be an instance of TripsRepo', () => {
+      expect(tripsRepo).to.be.an.instanceOf(TripsRepo);
     });
     
     it('should not have an empty array by default', () => {
-      expect(tripRepo.trips).to.deep.eq([
+      expect(tripsRepo.trips).to.deep.eq([
         {
           "id": 1,
           "userID": 44,
@@ -55,10 +55,10 @@ describe('TripRepo Class', () => {
   })
 
   describe('Method', () => {
-    it('should filter trips by date', () => {
-      tripRepo.filterTripsByYear('2019');
+    it('should filter trips by year', () => {
+      tripsRepo.filterTripsByYear('2019');
 
-      expect(tripRepo.filterTripsByYear('2019')).to.deep.eq([
+      expect(tripsRepo.filterTripsByYear('2019')).to.deep.eq([
         {
           "id": 1,
           "userID": 44,
@@ -73,9 +73,9 @@ describe('TripRepo Class', () => {
     });
 
     it('should filter pending trips by year', () => {
-      tripRepo.filterPendingTrips('2019');
+      tripsRepo.filterPendingTrips('2019');
 
-      expect(tripRepo.filterPendingTrips('2019')).to.deep.eq([
+      expect(tripsRepo.filterPendingTrips('2019')).to.deep.eq([
         {
           "id": 2,
           "userID": 35,
@@ -126,9 +126,9 @@ describe('TripRepo Class', () => {
           alt: "people crossing the street during the day surrounded by tall buildings and advertisements"
         },  
       ]
-      tripRepo.calculateTotalTripCostPerYear(destinations, 44);
+      tripsRepo.calculateTotalTripCostPerYear(destinations, 44);
       
-      expect(tripRepo.calculateTotalTripCostPerYear(destinations, 44)).to.eq(5819)
+      expect(tripsRepo.calculateTotalTripCostPerYear(destinations, 44)).to.eq(5819)
     })
   })
 

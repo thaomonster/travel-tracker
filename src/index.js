@@ -1,9 +1,9 @@
 import './css/index.scss';
 import Traveler from '../src/Traveler';
 import Trip from './Trip';
-import TripsRepo from './TripRepo';
+import TripsRepo from './TripsRepo';
 import Destination from './Destination';
-import DestinationsRepo from './DestinationRepo';
+import DestinationsRepo from './DestinationsRepo';
 import apiCalls from '../src/apis';
 import domUpdates from '../src/domUpdates';
 
