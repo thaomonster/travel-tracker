@@ -48,11 +48,6 @@ header {
   @include widgetStyles();
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-}
-
 .sub-header {
   @include mainBodyStyle();
 }
